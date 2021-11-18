@@ -18,7 +18,7 @@ python train_grok.py
 ```
 
 ![](grokk.png)
-###### Running the above command should give accuracy curves like this.
+###### Running the above command should give curves like this.
 
 Try different operations or learning / architectural hparams by modifying configurations in the `config/` directory. I use [Hydra](https://hydra.cc/docs/intro) to handle the configs (see their documentation to learn how to change configs in the commandline etc...).
 
