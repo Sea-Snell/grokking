@@ -1,6 +1,9 @@
+import os
 import torch
+import torch.nn as nn
 import numpy as np
 from collections import defaultdict
+import math
 
 def causal_attn_mask(seq_len, device=torch.device('cpu')):
     # seq_len = length of sequence
@@ -16,3 +19,13 @@ def combine_logs(logs):
             count_logs[k] += c
     return {k: combined_logs[k] / count_logs[k] for k in combined_logs.keys()}
 
+def parameter_norm(model: nn.Module):
+    norm = 0.0
+    for param in model.parameters():
+        norm += (param.norm() ** 2).item()
+    return math.sqrt(norm)
+
+def convert_path(path):
+    if path is None:
+        return None
+    return os.path.join(os.path.dirname(os.path.realpath(__file__)), '../', path)

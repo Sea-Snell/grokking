@@ -1,0 +1,27 @@
+defaults:
+  - dataset: mod_subtract_dataset
+  - model: grokk_model
+  - _self_
+
+dataset:
+  frac_train: 0.4
+  p: 96
+
+model:
+  transformer_config:
+    pre_norm: true
+
+train:
+  num_workers: 0
+  bsize: 512
+  lr: 1e-3
+  weight_decay: 0.0
+  betas: [0.9, 0.98]
+  warmup_steps: 10
+  eval_every: 10
+  eval_batches: 8
+  max_steps: null
+
+wandb:
+  use_wandb: true
+  wandb_project: grokking_replica

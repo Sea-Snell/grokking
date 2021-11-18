@@ -1,0 +1,3 @@
+name: permutation_group_dataset
+k: 5
+frac_train: 0.5
