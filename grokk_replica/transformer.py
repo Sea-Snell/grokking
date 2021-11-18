@@ -35,7 +35,7 @@ class MultiHeadAttention(nn.Module):
             key_heads = torch.cat([past_k, key_heads], dim=1)
             val_heads = torch.cat([past_v, val_heads], dim=1)
         attn_matrix = F.softmax((torch.einsum('bqhd,bkhd->hbqk', query_heads, key_heads)
-                                 / math.sqrt(self.attn_dim)).masked_fill(mask, -1e9), dim=-1)
+                                 / math.sqrt(self.attn_dim)).masked_fill(mask, float('-inf')), dim=-1)
         attn_matrix = self.dropout(attn_matrix.transpose(0, 1).contiguous())
         combined_vals = torch.einsum('bkhd,bhqk->bqhd', val_heads, attn_matrix).reshape(batch, time, self.attn_dim*self.heads)
         attn_output = self.output_proj(combined_vals)

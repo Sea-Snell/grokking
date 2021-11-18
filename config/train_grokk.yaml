@@ -20,7 +20,7 @@ train:
   warmup_steps: 10
   eval_every: 10
   eval_batches: 8
-  max_steps: null
+  max_steps: 1e6
 
 wandb:
   use_wandb: true
