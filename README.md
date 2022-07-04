@@ -14,7 +14,7 @@ To roughly re-create Figure 1 in the paper run:
 ```
 export PYTHONPATH=$(pwd)/grokk_replica/
 cd scripts/
-python train_grok.py
+python train_grokk.py
 ```
 
 ![](grokk.png)
